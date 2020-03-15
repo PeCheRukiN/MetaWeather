@@ -1,0 +1,152 @@
+openapi: 3.0.1
+info:
+  title: MetaWeather
+  description: MetaWeather
+  version: 1.0.0-oas3
+externalDocs:
+  description: API Root
+  url: https://www.metaweather.com/
+servers:
+- url: https://www.metaweather.com/
+tags:
+- name: MetaWeather
+  description: MetaWeather API
+paths:
+  /api/location/search/:
+    get:
+      tags:
+      - search location
+      summary: Search location by name
+      operationId: searchLocationByName
+      parameters:
+      - name: query
+        in: query
+        description: String
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocationItems'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+  /api/location/{woeid}/:
+    get:
+      tags:
+      - get location data
+      summary: Get location data
+      operationId: getLocationData
+      parameters:
+      - name: woeid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocationWeather'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+components:
+  schemas:
+    LocationItems:
+      type: array
+      items:
+        $ref: '#/components/schemas/Location'
+    Location:
+      type: object
+      properties:
+        title:
+          type: string
+        location_type:
+          type: string
+        woeid:
+          type: integer
+        latt_long:
+          type: string
+    LocationWeather:
+      type: object
+      properties:
+        consolidated_weather:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConsolidatedWeather'
+        title:
+          type: string
+        location_type":
+          type: string
+        woeid:
+          type: integer
+        time:
+          type: string
+        sun_rise:
+          type: string
+        sun_set:
+          type: string
+    ConsolidatedWeather:
+      type: array
+      items:
+        $ref: '#/components/schemas/Weather'
+    Weather:
+      type: object
+      properties:
+        id:
+          type: integer
+        weather_state_name:
+          type: string
+        weather_state_abbr:
+          type: string
+        wind_direction_compass:
+          type: string
+        created:
+          type: string
+        applicable_date:
+          type: string
+        min_temp:
+          type: number
+        max_temp:
+          type: number
+        the_temp:
+          type: number
+        wind_speed:
+          type: number
+        wind_direction:
+          type: number
+        air_pressure:
+          type: number
+        humidity:
+          type: number
+        visibility:
+          type: number
+    ErrorModel:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          maximum: 600
+          minimum: 100
+          type: integer
