@@ -32,6 +32,7 @@
 		806F1F49241E944B00B3F1C1 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806F1F38241E944B00B3F1C1 /* Configuration.swift */; };
 		806F1F50241E994C00B3F1C1 /* LocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806F1F4F241E994C00B3F1C1 /* LocationsView.swift */; };
 		806F1F53241E999100B3F1C1 /* WeatherDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806F1F52241E999100B3F1C1 /* WeatherDetailsView.swift */; };
+		99E2DF98241F9953000F804A /* PagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E2DF97241F9953000F804A /* PagerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		806F1F38241E944B00B3F1C1 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		806F1F4F241E994C00B3F1C1 /* LocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsView.swift; sourceTree = "<group>"; };
 		806F1F52241E999100B3F1C1 /* WeatherDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailsView.swift; sourceTree = "<group>"; };
+		99E2DF97241F9953000F804A /* PagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 				806F1EF0241E908A00B3F1C1 /* ContentView.swift */,
 				806F1F4E241E992D00B3F1C1 /* CitiesList */,
 				806F1F51241E996D00B3F1C1 /* WeatherDetails */,
+				99E2DF96241F9946000F804A /* PagerView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -186,6 +189,14 @@
 				806F1F52241E999100B3F1C1 /* WeatherDetailsView.swift */,
 			);
 			path = WeatherDetails;
+			sourceTree = "<group>";
+		};
+		99E2DF96241F9946000F804A /* PagerView */ = {
+			isa = PBXGroup;
+			children = (
+				99E2DF97241F9953000F804A /* PagerView.swift */,
+			);
+			path = PagerView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,6 +292,7 @@
 				806F1F47241E944B00B3F1C1 /* Models.swift in Sources */,
 				806F1F3E241E944B00B3F1C1 /* APIs.swift in Sources */,
 				806F1F3A241E944B00B3F1C1 /* URLSessionImplementations.swift in Sources */,
+				99E2DF98241F9953000F804A /* PagerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,6 +433,7 @@
 				DEVELOPMENT_TEAM = 37XNJZ4SRX;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MetaWeather/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -441,6 +454,7 @@
 				DEVELOPMENT_TEAM = 37XNJZ4SRX;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MetaWeather/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

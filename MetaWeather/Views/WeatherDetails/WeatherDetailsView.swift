@@ -14,6 +14,7 @@ final class WeatherDetailsViewModel: ObservableObject {
     
     init(locationId: Int) {
         GetLocationDataAPI.getLocationData(woeid: "\(locationId)") { [weak self] (locationWeather, error) in
+            print(locationWeather)
             if let weather = locationWeather {
                 self?.weather = weather
             } else if let error = error {
@@ -28,7 +29,7 @@ struct WeatherDetailsView: View {
     @EnvironmentObject var viewModel: WeatherDetailsViewModel
     
     var body: some View {
-        Group {
+        VStack(alignment: .leading, spacing: 10) {
             Text(viewModel.weather?.consolidatedWeather?.first?.weatherStateName ?? "")
             Text("Temperature: \(viewModel.weather?.consolidatedWeather?.first?.theTemp ?? 0) ℃")
             Text("Max temperature: \(viewModel.weather?.consolidatedWeather?.first?.maxTemp ?? 0) ℃")
