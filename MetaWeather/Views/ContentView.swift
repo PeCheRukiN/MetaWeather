@@ -14,15 +14,15 @@ struct ContentView: View {
     @State private var currentPage = 0
     
     var body: some View {
-        PagerView(pageCount: 3, currentIndex: $currentPage) {
-            
+        
+        PagerView(index: $currentPage, maxIndex: 2) {
             NavigationView {
                 VStack(spacing: 10) {
-                    TextField("Enter location name", text: $searchText)
+                    TextField("Enter location name", text: self.$searchText)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(EdgeInsets(top: 0, leading: 16, bottom: 16, trailing: 16))
                     
-                    NavigationLink(destination: LocationsView().environmentObject(LocationsViewModel(query: searchText))) {
+                    NavigationLink(destination: LazyView(LocationsView().environmentObject(LocationsViewModel(query: self.searchText)))) {
                         Text("Find location")
                     }
                     .padding(.horizontal, 16.0)
@@ -66,5 +66,15 @@ struct ContentView_Previews: PreviewProvider {
 extension UIApplication {
     func endEditing() {
         sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+
+public struct LazyView<Content: View>: View {
+    private let build: () -> Content
+    public init(_ build: @autoclosure @escaping () -> Content) {
+        self.build = build
+    }
+    public var body: Content {
+        build()
     }
 }

@@ -14,7 +14,6 @@ final class WeatherDetailsViewModel: ObservableObject {
     
     init(locationId: Int) {
         GetLocationDataAPI.getLocationData(woeid: "\(locationId)") { [weak self] (locationWeather, error) in
-            print(locationWeather)
             if let weather = locationWeather {
                 self?.weather = weather
             } else if let error = error {
